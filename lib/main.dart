@@ -19,13 +19,13 @@ class Myapp extends StatelessWidget{
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Hello world"),
-              Image.network('https://tinyurl.com/flutter-logo-img'),
+              Image.network('https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png'),
               // if want a image from local system . use Image.assest() . initially, move the image in project folder
               Container(
                 color: Colors.blue,
                 child : Text("I am a container")
               )
-            ],
+            ]
           )
         )
       )

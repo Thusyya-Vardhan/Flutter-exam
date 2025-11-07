@@ -29,6 +29,7 @@ class Myapp extends StatelessWidget{
             Column(
               //MainAxisAlignment: Vertical
               //CrossAxisAlignment: Horizontal 
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(color:Colors.red,width: 50,height: 50),
                 Container(color:Colors.blue,width: 50,height: 50)

@@ -1,85 +1,63 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
+void main(){
+  runApp(Myapp());
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("Container Form Example")),
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: SimpleForm(),
-          ),
-        ),
-      ),
-    );
-  }
+class Myapp extends StatelessWidget{
+
+    @override
+    Widget build(BuildContext context){
+      return MaterialApp(
+        home:Scaffold(
+          appBar:AppBar(title:Text("Form")),
+          body: Center(
+            child:Container(
+              width: 250,
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(10)
+              ),
+              child: SimpleForm(),
+            )
+        )
+        )
+      );
+    }
 }
 
-class SimpleForm extends StatefulWidget {
+class SimpleForm extends StatefulWidget{
   @override
   State<SimpleForm> createState() => _SimpleFormState();
 }
 
-class _SimpleFormState extends State<SimpleForm> {
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
+class _SimpleFormState extends State<SimpleForm>{
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Name Field
-        Container(
-          width: 300, // fixed width
-          padding: EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: TextField(
-            controller: _nameController,
-            decoration: InputDecoration(
-              labelText: "Name",
-              border: InputBorder.none, // remove default border
-            ),
-          ),
-        ),
-        SizedBox(height: 15),
+    @override
+    Widget build(BuildContext context){
 
-        // Email Field
-        Container(
-          width: 300,
-          padding: EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(10),
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            decoration: InputDecoration(labelText: "Name:"),
           ),
-          child: TextField(
-            controller: _emailController,
-            decoration: InputDecoration(
-              labelText: "Email",
-              border: InputBorder.none,
-            ),
+          //SizedBox(height: 10),
+          TextField(
+            decoration: InputDecoration(labelText: "Email:"),
           ),
-        ),
-        SizedBox(height: 20),
-
-        // Submit Button
-        ElevatedButton(
-          onPressed: () {
-            print("Name: ${_nameController.text}");
-            print("Email: ${_emailController.text}");
-          },
-          child: Text("Submit"),
-        ),
-      ],
-    );
-  }
+          //SizedBox(height: 10),
+          TextField(
+            decoration: InputDecoration(labelText: "Mobile No:"),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            child: Text("Submit"),
+            onPressed: (){
+              print("Form Submitted successfully");
+            },
+          )
+        ],
+      );
+    }
 }

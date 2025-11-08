@@ -1,110 +1,102 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
+void main(){
+  runApp(Myapp());
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("Form Validation Example")),
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: SimpleForm(),
-          ),
-        ),
-      ),
-    );
-  }
+class Myapp extends StatelessWidget{
+
+    @override
+    Widget build(BuildContext context){
+      return MaterialApp(
+        home:Scaffold(
+          appBar:AppBar(title:Text("Form")),
+          body: Center(
+            child:Container(
+              width: 250,
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(10)
+              ),
+              child: SimpleForm(),
+            )
+        )
+        )
+      );
+    }
 }
 
-class SimpleForm extends StatefulWidget {
+class SimpleForm extends StatefulWidget{
   @override
   State<SimpleForm> createState() => _SimpleFormState();
 }
 
-class _SimpleFormState extends State<SimpleForm> {
-  final _formKey = GlobalKey<FormState>(); // key for validation
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
+class _SimpleFormState extends State<SimpleForm>{
 
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey, // connect form key
+    final _formkey = GlobalKey<FormState>();
+    final _name = TextEditingController();
+    final _email =TextEditingController();
+    final _mobileNo = TextEditingController();
+
+    @override
+    Widget build(BuildContext context){
+
+      return Form(
+      key: _formkey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Name Field
-          Container(
-            width: 300,
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: TextFormField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                labelText: "Name",
-                border: InputBorder.none,
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return "Please enter your name";
-                }
-                return null; // valid
-              },
-            ),
+          TextFormField(
+            controller: _name,
+            decoration: InputDecoration(labelText: "Name:"), 
+            validator : (v) {
+              if(v==null || v.isEmpty ){
+                return "Please enter name";
+              } else {return null;}
+            } ,
           ),
-          SizedBox(height: 15),
-
-          // Email Field
-          Container(
-            width: 300,
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                labelText: "Email",
-                border: InputBorder.none,
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return "Please enter your email";
-                }
-                if (!value.contains("@")) {
-                  return "Enter a valid email";
-                }
-                return null; // valid
-              },
-            ),
+          //SizedBox(height: 10),
+          TextFormField(
+            controller: _email,
+            decoration: InputDecoration(labelText: "Email:"),
+            validator: (v){
+              if(v==null || v.isEmpty){
+                return "Please enter email";
+              }else if(!v.contains('@')){
+                return "Please enter valid email";
+              } else{
+                return null;
+              }
+            },
+          ),
+          //SizedBox(height: 10),
+          TextFormField(
+            controller: _mobileNo,
+            decoration: InputDecoration(labelText: "Mobile No:"),
+            validator: (v){
+              if(v==null || v.isEmpty){
+              return "Please enter mobile no";
+              } else if(v.length!=10){
+                return "Please enter valid mobile no";
+              }else{
+                return null;
+              }
+            },
           ),
           SizedBox(height: 20),
-
-          // Submit Button
           ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                // All inputs valid
-                print("Name: ${_nameController.text}");
-                print("Email: ${_emailController.text}");
+            child: Text("Submit"),
+            onPressed: (){
+              if (_formkey.currentState!.validate()) {
+                // If all validations pass
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Form submitted successfully!")),
+                  SnackBar(content: Text("Form Submitted Successfully"))
                 );
               }
             },
-            child: Text("Submit"),
-          ),
+          )
         ],
-      ),
-    );
-  }
+      )
+      );
+    }
 }

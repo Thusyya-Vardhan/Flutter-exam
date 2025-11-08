@@ -36,18 +36,19 @@ class _SimpleFormState extends State<SimpleForm>{
     @override
     Widget build(BuildContext context){
 
-      return Column(
+      return Form(
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          TextField(
+          TextFormField(
             decoration: InputDecoration(labelText: "Name:"),
           ),
           //SizedBox(height: 10),
-          TextField(
+          TextFormField(
             decoration: InputDecoration(labelText: "Email:"),
           ),
           //SizedBox(height: 10),
-          TextField(
+          TextFormField(
             decoration: InputDecoration(labelText: "Mobile No:"),
           ),
           SizedBox(height: 20),
@@ -58,6 +59,7 @@ class _SimpleFormState extends State<SimpleForm>{
             },
           )
         ],
+      )
       );
     }
 }

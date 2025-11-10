@@ -87,12 +87,7 @@ class _SimpleFormState extends State<SimpleForm>{
           ElevatedButton(
             child: Text("Submit"),
             onPressed: (){
-              if (_formkey.currentState!.validate()) {
-                // If all validations pass
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Form Submitted Successfully"))
-                );
-              }
+             print("Form submitted");
             },
           )
         ],

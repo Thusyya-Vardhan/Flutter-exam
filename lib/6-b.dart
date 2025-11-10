@@ -11,7 +11,11 @@ class Myapp extends StatelessWidget{
 
     return MaterialApp(
       theme:ThemeData(
-        primaryColor: Colors.blue,
+        scaffoldBackgroundColor: Colors.black,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white,
+          titleTextStyle: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Colors.black)
+        ),
         textTheme:TextTheme( 
           bodyLarge:TextStyle(fontSize: 20,color:Colors.blue)
           )
@@ -27,13 +31,10 @@ class Homescreen extends StatelessWidget{
   Widget build(BuildContext context){
 
       return Scaffold(
-        appBar: AppBar(title:Text("HomeScreen")),
+        appBar: AppBar(title:Text("HomeScreen"),centerTitle: true),
         body:Center(
-          child:Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Hello World!!",style: Theme.of(context).textTheme.bodyLarge),
-          ]
+          child:Center(
+             child: Text("Hello World!!",style: Theme.of(context).textTheme.bodyLarge)
         )
         )
       );

@@ -87,7 +87,9 @@ class _SimpleFormState extends State<SimpleForm>{
           ElevatedButton(
             child: Text("Submit"),
             onPressed: (){
-             print("Form submitted");
+              if (_formkey.currentState!.validate()) {
+                  print("Form submitted");
+              }
             },
           )
         ],
